@@ -1,65 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bkgndColour"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/bkgndColour"
     tools:context="com.londonappbrewery.bitcointicker.MainActivity">
 
     <TextView
+        android:id="@+id/oneBitcoinTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/label_default_text"
-        android:id="@+id/priceLabel"
-        android:textSize="45sp"
-        android:textStyle="bold"
+        android:layout_above="@+id/priceLabel"
+        android:layout_alignLeft="@+id/priceLabel"
+        android:layout_alignStart="@+id/priceLabel"
+        android:layout_marginBottom="16dp"
+        android:text="@string/one_bitcoin"
         android:textColor="@color/fontColour"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:text="@string/label_default_text"
+        android:textColor="@color/fontColour"
+        android:textSize="45sp"
+        android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/logoImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/logoImage"
-        android:contentDescription="@string/imageview_desc"
-        android:src="@drawable/bitcoin_image"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/imageview_desc"
+        android:src="@drawable/bitcoin_image" />
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/priceLabel"
         android:gravity="center_vertical|center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/base"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:id="@+id/textView"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
-
         <Spinner
+            android:id="@+id/currency_spinner"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/currency_spinner"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:dropDownSelector="@color/fontColour"
             android:gravity="center_horizontal"
             android:spinnerMode="dropdown"
-            android:dropDownSelector="@color/fontColour"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceLabel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/base"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/currency_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </RelativeLayout>
